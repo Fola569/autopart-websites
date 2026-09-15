@@ -1,0 +1,80 @@
+Here's the SQL code to create the specified tables and their relationships:
+
+```sql
+
+CREATE TABLE PartsVehicle (
+    vehicleid INT PRIMARY KEY,
+    make VARCHAR(255),
+    model VARCHAR(255),
+    year INT,
+    partsid INT,
+    name VARCHAR(255),
+    description TEXT,
+    unitprice DECIMAL(10,2),
+    image VARCHAR(255)
+)
+
+
+
+-- Creating Vehicles table
+CREATE TABLE Vehicles (
+    vehicle_id INT PRIMARY KEY,
+    make VARCHAR(255),
+    model VARCHAR(255),
+    year INT
+);
+
+-- Creating Parts table
+CREATE TABLE Parts (
+    part_id INT PRIMARY KEY,
+    name VARCHAR(255),
+    description TEXT,
+    unit_price DECIMAL(10,2),
+    image VARCHAR(255)
+);
+
+-- Creating Categories table
+CREATE TABLE Categories (
+    category_id INT PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+-- Creating VehicleCompatibility table
+CREATE TABLE VehicleCompatibility (
+    vehicle_id INT,
+    part_id INT,
+    PRIMARY KEY (vehicle_id, part_id),
+    FOREIGN KEY (vehicle_id) REFERENCES Vehicles(vehicle_id),
+    FOREIGN KEY (part_id) REFERENCES Parts(part_id)
+);
+
+-- Creating Inventory table
+CREATE TABLE Inventory (
+    inventory_id INT PRIMARY KEY,
+    part_id INT,
+    quantity INT,
+    reorder_level INT,
+    FOREIGN KEY (part_id) REFERENCES Parts(part_id)
+);
+
+-- Creating Suppliers table (optional)
+CREATE TABLE Suppliers (
+    supplier_id INT PRIMARY KEY,
+    name VARCHAR(255),
+    contact_info TEXT
+);
+
+-- Creating Purchases table (optional)
+CREATE TABLE Purchases (
+    purchase_id INT PRIMARY KEY,
+    supplier_id INT,
+    part_id INT,
+    purchase_date DATE,
+    quantity INT,
+    unit_cost DECIMAL(10,2),
+    FOREIGN KEY (supplier_id) REFERENCES Suppliers(supplier_id),
+    FOREIGN KEY (part_id) REFERENCES Parts(part_id)
+);
+```
+
+This code sets up the tables with the required columns, data types, primary keys, and foreign key relationships. If you need further customization or additional constraints, you can adjust the SQL code accordingly.

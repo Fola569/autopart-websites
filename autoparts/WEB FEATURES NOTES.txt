@@ -1,0 +1,16 @@
+https://demo-21.woovinapro.com/ has nice templates
+
+nav bar menu to panel
+video as background in a div
+side menu with hyperlink active, hover and click effect
+
+Ogg html code for whatsapp sharing with gavicon abd title
+radius div with bold text by left and image by right and button at bottom
+div with background image with full width on page and caption with button by right
+word with image as powerclip
+4 buttons equally spaced
+6 column grid gallery with image radius, caption below and button after caption
+div with 3 column by 2 rows with paragraph text on each with glympicon
+
+php file that automatically upload a file to a remote file every 30 seconds
+

@@ -1,0 +1,225 @@
+-- phpMyAdmin SQL Dump
+-- version 2.10.1
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Generation Time: Oct 01, 2024 at 03:28 PM
+-- Server version: 5.0.45
+-- PHP Version: 5.2.5
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- 
+-- Database: `jopass`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `categories`
+-- 
+
+CREATE TABLE `categories` (
+  `catname` varchar(255) default NULL,
+  `id` int(33) NOT NULL auto_increment,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+
+-- 
+-- Dumping data for table `categories`
+-- 
+
+INSERT INTO `categories` (`catname`, `id`) VALUES 
+('Engine Components', 1),
+('Transmission Parts', 2),
+('Suspension Systems', 3),
+('Braking Systems', 4),
+('Fuel System Parts', 5),
+('Cooling System Components', 6),
+('Exhaust System Parts', 7),
+('Electrical Systems', 8),
+('Ignition Components', 9),
+('Body Parts', 10),
+('Interior Parts', 11),
+('Wheels and Tires', 12),
+('Lighting Systems', 13),
+('Steering Systems', 14),
+('HVAC (Heating, Ventilation, Air Conditioning)', 15),
+('Drive Train Components', 16),
+('Batteries', 17),
+('Filters (Air, Oil, Fuel)', 18),
+('Belts and Hoses', 19),
+('Sensors and Actuators', 20),
+('Safety Systems (Airbags, Seatbelts)', 21),
+('Glass and Mirrors', 22),
+('Trim and Molding', 23),
+('Fenders and Bumpers', 24),
+('Towing Equipment', 25);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `parts`
+-- 
+
+CREATE TABLE `parts` (
+  `part_id` int(11) NOT NULL,
+  `name` varchar(255) default NULL,
+  `description` text,
+  `unit_price` decimal(10,2) default NULL,
+  `image` varchar(255) default NULL,
+  PRIMARY KEY  (`part_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `parts`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `partsusers`
+-- 
+
+CREATE TABLE `partsusers` (
+  `id` int(22) NOT NULL auto_increment,
+  `bizname` varchar(44) NOT NULL,
+  `email` varchar(44) NOT NULL,
+  `pass` varchar(44) NOT NULL,
+  `img` varchar(44) NOT NULL,
+  `info1` varchar(44) NOT NULL,
+  `info2` varchar(44) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Dumping data for table `partsusers`
+-- 
+
+INSERT INTO `partsusers` (`id`, `bizname`, `email`, `pass`, `img`, `info1`, `info2`) VALUES 
+(1, 'Kola Cares', 'colrcare@gmail.com', 'colecare', '', '', ''),
+(2, 'Kola Caresz', 'colrcare@gmail.com', 'colecare', '', '', '');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `partsvehicle`
+-- 
+
+CREATE TABLE `partsvehicle` (
+  `vehincleid` int(11) NOT NULL,
+  `make` varchar(255) default NULL,
+  `model` varchar(255) default NULL,
+  `year` int(11) default NULL,
+  `partsid` int(11) default NULL,
+  `name` varchar(255) default NULL,
+  `descr` text,
+  `unitprice` decimal(10,2) default NULL,
+  `img` varchar(255) default NULL,
+  PRIMARY KEY  (`vehincleid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `partsvehicle`
+-- 
+
+INSERT INTO `partsvehicle` (`vehincleid`, `make`, `model`, `year`, `partsid`, `name`, `descr`, `unitprice`, `img`) VALUES 
+(0, '$make', '$model', 0, 0, NULL, '$descr', '0.00', '$img'),
+(90, 'Toyota', 'Xv5', 2024, 9, NULL, 'Red Mustang', '345000.00', '');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `purchases`
+-- 
+
+CREATE TABLE `purchases` (
+  `purchase_id` int(11) NOT NULL,
+  `supplier_id` int(11) default NULL,
+  `part_id` int(11) default NULL,
+  `purchase_date` date default NULL,
+  `quantity` int(11) default NULL,
+  `unit_cost` decimal(10,2) default NULL,
+  PRIMARY KEY  (`purchase_id`),
+  KEY `supplier_id` (`supplier_id`),
+  KEY `part_id` (`part_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `purchases`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `suppliers`
+-- 
+
+CREATE TABLE `suppliers` (
+  `supplier_id` int(11) NOT NULL,
+  `name` varchar(255) default NULL,
+  `contact_info` text,
+  PRIMARY KEY  (`supplier_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `suppliers`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `vehiclecompatibility`
+-- 
+
+CREATE TABLE `vehiclecompatibility` (
+  `vehicle_id` int(11) NOT NULL default '0',
+  `part_id` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`vehicle_id`,`part_id`),
+  KEY `part_id` (`part_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `vehiclecompatibility`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `vehicles`
+-- 
+
+CREATE TABLE `vehicles` (
+  `vehicle_id` int(11) NOT NULL,
+  `make` varchar(255) default NULL,
+  `model` varchar(255) default NULL,
+  `year` int(11) default NULL,
+  PRIMARY KEY  (`vehicle_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `vehicles`
+-- 
+
+
+-- 
+-- Constraints for dumped tables
+-- 
+
+-- 
+-- Constraints for table `purchases`
+-- 
+ALTER TABLE `purchases`
+  ADD CONSTRAINT `purchases_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`supplier_id`),
+  ADD CONSTRAINT `purchases_ibfk_2` FOREIGN KEY (`part_id`) REFERENCES `parts` (`part_id`);
+
+-- 
+-- Constraints for table `vehiclecompatibility`
+-- 
+ALTER TABLE `vehiclecompatibility`
+  ADD CONSTRAINT `vehiclecompatibility_ibfk_1` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`vehicle_id`),
+  ADD CONSTRAINT `vehiclecompatibility_ibfk_2` FOREIGN KEY (`part_id`) REFERENCES `parts` (`part_id`);

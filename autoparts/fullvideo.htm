@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Background with Content</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Full-page video container */
+    .video-container {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* The video that will fill the page */
+    .video-container video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    /* Overlay content */
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Image and caption layout */
+    .content-wrapper {
+      display: flex;
+      //background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .image {
+      flex: 1;
+      margin-right: 20px;
+    }
+
+    .image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .caption {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .caption h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .caption p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .caption button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      border-radius: 5px;
+    }
+
+    .caption button:hover {
+      background-color: #0056b3;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Video Background Container -->
+  <div class="video-container">
+    <video autoplay muted loop>
+      	<source src="vids1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Content on top of video -->
+    <div class="content">
+      <div class="content-wrapper">
+        <!-- Left side image -->
+        <div class="image">
+          <img src="vacay.gif" alt="Image">
+        </div>
+
+        <!-- Right side caption and button -->
+        <div class="caption">
+          <h1>Your Captivating Title</h1>
+          <p>Here is a description or caption that goes next to the image, explaining the content or purpose of this section.</p>
+          <button>Call to Action</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

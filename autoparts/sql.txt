@@ -1,0 +1,47 @@
+AutoPartHub
+
+PartsVehincle
+id, Vehincleid, partsid, make,model,year,img,descr,unitprice
+
+
+Sales
+id, userid,partsid,dts,qty,units,
+
+
+Suppliers
+id,name,phone,email, addr
+
+Inventory
+id, partid,qty,reorder
+
+
+
+
+
+Ai Prompt
+
+Create a dependent dropdown for that does the following
+populates first drop down with all values in the make column of the PartsVehincle table
+on select of item in drop down, use sql select distinct to populate second drop down with all values from column called year in the same table
+
+
+Create php file. Let all code be in one file, here's what the file does:
+SQl code to create table as follows:
+
+PartsVehincle with columns:
+id, Vehincleid, partsid, make, model,year,img,descr,unitprice
+
+Sales with columns:
+id, userid,partsid,dts,qty,units,img
+
+Suppliers with columns:
+id,name,phone,email, addr,suplrid
+
+Inventory with columns:
+id, partid,qty,reorder, img
+
+Note: Pls make all id colmn to be INT data type and auto increment and primary key
+
+Next, Create Html form for inserting each of the data into each table
+
+Then create html table to pull data from all tables. let dynamic images be displayed for any img column pulled out from any tables. also add 2 additional columns for each html table containing a href button called action 1 and action 2 which links to action1.php and action2.php respectively

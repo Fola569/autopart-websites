@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar to Sidebar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar styles */
+    .navbar {
+      background-color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .navbar a {
+      padding: 14px 20px;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .navbar a:hover {
+      background-color: #575757;
+    }
+
+    .navbar .menu-btn {
+      background-color: #333;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .navbar .menu-btn:hover {
+      background-color: #575757;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #333;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+    .sidebar .close-btn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    /* Toggle button for sidebar */
+    @media screen and (max-width: 600px) {
+      .navbar a {
+        display: none;
+      }
+      .navbar .menu-btn {
+        display: block;
+      }
+    }
+
+    @media screen and (min-width: 601px) {
+      .sidebar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <button class="menu-btn" onclick="openSidebar()">&#9776;
+            <img class="logo" src="logotech.png" alt="GoTechs Logo" width="106" height="40"></button>
+    <a href="#link1">Link 1</a>
+    <a href="#link2">Link 2</a>
+    <a href="#link3">Link 3</a>
+    <a href="#link4">Link 4</a>
+    <a href="#link5">Link 5</a>
+  </div>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">X</a>
+    <a href="#link1">Link 1</a>
+    <a href="#link2">Link 2</a>
+    <a href="#link3">Link 3</a>
+    <a href="#link4">Link 4</a>
+    <a href="#link5">Link 5</a>
+  </div>
+
+  <script>
+    function openSidebar() {
+      document.getElementById("sidebar").style.width = "250px";
+    }
+
+    function closeSidebar() {
+      document.getElementById("sidebar").style.width = "0";
+    }
+  </script>
+
+</body>
+</html>

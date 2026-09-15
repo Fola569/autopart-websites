@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Scrolling Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .image-container {
+            display: flex;
+            width: 80%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-track {
+            display: flex;
+            animation: scrollLeft 30s linear infinite;
+        }
+
+        .image-box {
+            position: relative;
+            min-width: 100%;
+            margin-right: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        @keyframes scrollLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-600%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <div class="image-track">
+            <div class="image-box">
+                <img src="1.jpg" alt="Image 1">
+                <div class="caption">View Demo</div>
+            </div>
+            <div class="image-box">
+                <img src="2.jpg" alt="Image 2">
+                <div class="caption">View Demo</div>
+            </div>
+            <div class="image-box">
+                <img src="3.jpg" alt="Image 3">
+                <div class="caption">View Demo</div>
+            </div>
+            <div class="image-box">
+                <img src="4.jpg" alt="Image 4">
+                <div class="caption">View Demo</div>
+            </div>
+            <div class="image-box">
+                <img src="5.jpg" alt="Image 5">
+                <div class="caption">View Demo</div>
+            </div>
+            <div class="image-box">
+                <img src="6.jpg" alt="Image 6">
+                <div class="caption">View Demo</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
